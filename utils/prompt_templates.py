@@ -46,3 +46,52 @@ A summary is less relevant if it omits some of the key facts from the article, o
 A summary is consistent with the article if it faithfully reflects the main points, facts, and tone of the article.
 A summary is inconsistent if it introduces any errors, contradictions, or distortions of the original article."""
 }
+
+
+# Llama 3 uses a different format (because why not make life more difficult?)
+
+theirs_compare_llama3 = """\
+<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+{INSTRUCTION}
+
+Source text: {ARTICLE}
+
+Compare the following summaries:
+
+Summary A: {SUMMARY1}
+
+Summary B: {SUMMARY2}
+
+Question: Which summary is more {ASPECT}? \
+If the summary A is more {ASPECT}, please return 'A'. \
+If the summary B is more {ASPECT}, please return 'B' \
+You must only return the choice.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+Answer: """
+
+theirs_score_llama3 = """\
+<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+{INSTRUCTION}
+
+Source text: {ARTICLE}
+
+Summary: {SUMMARY}
+
+Please rate on a scale from 1 to 5, where 1 represents very low {ASPECT}, \
+and 5 indicates excellent {ASPECT}. You must only return an int score.\
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+Score: """
+
+mine_compare_llama3 = """\
+<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+Consider the following article: {ARTICLE}
+Below are two summaries of this article:
+Choice 1: {SUMMARY1}
+Choice 2: {SUMMARY2} 
+Which summary is more {ASPECT}?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+Between Choice 1 and Choice 2, the more {ASPECT} summary is Choice {CHOICE}"""
