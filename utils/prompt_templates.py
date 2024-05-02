@@ -1,3 +1,10 @@
+aspect_map = {
+    "coherence": "coherent",
+    "consistency": "consistent",
+    "fluency": "fluent",
+    "relevance": "relevant"
+}
+
 theirs_compare = """\
 [INST] {INSTRUCTION}
 
